@@ -1,0 +1,20 @@
+{
+  "name": "tentacle-model-monitor",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Christophe Vimbert <c.vimbert@outlook.fr>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cvimbert/tentacle-model-monitor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tentacle-model-manager": "cvimbert/tentacle-model-manager"
+  }
+}
