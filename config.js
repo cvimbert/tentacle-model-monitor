@@ -10,7 +10,11 @@ require.config({
     paths: {
         modelmanager: 'bower_components/tentacle-model-manager/dist/modelmanager.bundle.min',
         underscore: 'node_modules/underscore/underscore',
-        jquery: 'node_modules/jquery/dist/jquery'
+        jquery: 'node_modules/jquery/dist/jquery',
+        loadingmanager: 'src/loadingmanager',
+        monitorbutton: 'src/monitorbutton',
+        monitorpanel: 'src/monitorpanel',
+        monitorpanelsset: 'src/monitorpanelsset'
         /*underscore: 'node_modules/underscore/underscore',
         modelmanager: 'bower_components/tentacle-model-manager/src/modelmanager',
         modeldescriptor: 'bower_components/tentacle-model-manager/src/modeldescriptor',
