@@ -15,7 +15,7 @@ define([], function() {
         };
 
         $scope.getModels = function () {
-            $scope.models = mainModelManager.getModelByType($scope.modeltype);
+            $scope.models = shared.modelManager.getModelByType($scope.modeltype);
             console.log($scope.models);
         };
 
@@ -29,7 +29,7 @@ define([], function() {
 
         $scope.deleteItem = function (descid, item, $event) {
             $event.stopPropagation();
-            mainModelManager.deleteItem(descid, item);
+            shared.modelManager.deleteItem(descid, item);
         };
     };
 });

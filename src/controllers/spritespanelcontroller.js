@@ -12,13 +12,13 @@ define([], function() {
 
             $scope.getModels();
 
-            $scope.controlSprites = mainModelManager.getModelByType("ControlSprite");
-            $scope.foregroundSprites = mainModelManager.getModelByType("ForegroundSprite");
-            $scope.backgroundSprites = mainModelManager.getModelByType("BackgroundSprite");
+            $scope.controlSprites = shared.modelManager.getModelByType("ControlSprite");
+            $scope.foregroundSprites = shared.modelManager.getModelByType("ForegroundSprite");
+            $scope.backgroundSprites = shared.modelManager.getModelByType("BackgroundSprite");
         };
 
         $scope.getModels = function () {
-            $scope.models = mainModelManager.getModelByType($scope.modeltype);
+            $scope.models = shared.modelManager.getModelByType($scope.modeltype);
         };
 
         $scope.addReferenceItem = shared.addReferenceItem;
@@ -38,14 +38,14 @@ define([], function() {
         };
 
         $scope.getImageUrl = function (model, folder) {
-            var spriteFile = mainModelManager.getModelByUid(model.get("reference"));
-            var spritePackage = mainModelManager.getModelByUid(spriteFile.get("package"));
+            var spriteFile = shared.modelManager.getModelByUid(model.get("reference"));
+            var spritePackage = shared.modelManager.getModelByUid(spriteFile.get("package"));
             return spritePackage.get("identifier") + "/" + folder + "/" + spriteFile.get("file");
         };
 
         $scope.deleteItem = function (descid, item, $event) {
             $event.stopPropagation();
-            mainModelManager.deleteItem(descid, item);
+            shared.modelManager.deleteItem(descid, item);
         };
     };
 });

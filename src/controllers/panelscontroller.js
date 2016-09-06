@@ -17,7 +17,7 @@ define (["jquery"], function($) {
         $scope.$on("editItem", function (event, args) {
             $scope.item = args.item;
 
-            $scope.descriptor = mainModelManager.getClassDescriptor($scope.item.type).flattenByItem($scope.item);
+            $scope.descriptor = shared.modelManager.getClassDescriptor($scope.item.type).flattenByItem($scope.item);
             $scope.descid = $scope.item.type;
 
             if (!args.pushInStack)
@@ -31,7 +31,7 @@ define (["jquery"], function($) {
 
 
         shared.editItem = function (uid) {
-            var item = mainModelManager.getModelByUid(uid);
+            var item = shared.modelManager.getModelByUid(uid);
             $scope.editItemByItem(_.clone(item));
         };
 
@@ -43,7 +43,7 @@ define (["jquery"], function($) {
 
             var args = {
                 item: item,
-                descriptor: mainModelManager.getClassDescriptor(item.type).flattenByItem(item),
+                descriptor: shared.modelManager.getClassDescriptor(item.type).flattenByItem(item),
                 pushInStack: isback
             };
 
@@ -89,17 +89,17 @@ define (["jquery"], function($) {
             // on remplace l'objet courant dans la stack
             $scope.backItemsStack[$scope.backItemsStack.length - 1] = $scope.item;
 
-            $scope.descriptor = mainModelManager.getClassDescriptor($scope.descid).flattenByItem($scope.item);
+            $scope.descriptor = shared.modelManager.getClassDescriptor($scope.descid).flattenByItem($scope.item);
         };
 
         $scope.getReferences = function (targetDescid) {
-            var mod = mainModelManager.getModelById(targetDescid);
+            var mod = shared.modelManager.getModelById(targetDescid);
             return mod;
         };
 
         $scope.validate = function () {
             validatePendingItem($scope.item.uid);
-            mainModelManager.saveObject($scope.descid, $scope.item);
+            shared.modelManager.saveObject($scope.descid, $scope.item);
         };
 
         $scope.getReferencesCollection = function (item, attribute) {
@@ -112,12 +112,12 @@ define (["jquery"], function($) {
 
                 if (item.get(attribute.linkedcollectionattribute)) {
                     var linkedItemAttribute = item.get(attribute.linkedcollectionattribute);
-                    var litem = mainModelManager.getItem(linkedItemAttribute);
+                    var litem = shared.modelManager.getItem(linkedItemAttribute);
 
                     var itemValues = litem.get(attribute.linkedcollectionattributevalue);
 
                     _.each(itemValues, function (itemUid) {
-                        var it = mainModelManager.getItem(itemUid);
+                        var it = shared.modelManager.getItem(itemUid);
                         ret[itemUid] = it;
                     });
                 }
@@ -125,7 +125,7 @@ define (["jquery"], function($) {
                 return ret;
 
             } else {
-                return mainModelManager.getModelByType(attribute.referencetype);
+                return shared.modelManager.getModelByType(attribute.referencetype);
             }
 
             return {};
@@ -153,7 +153,7 @@ define (["jquery"], function($) {
             if (pendingItems[uid]) {
                 var pitem = pendingItems[uid];
 
-                var toDesc = mainModelManager.getClassDescriptor(pitem.addto.type).getRaw();
+                var toDesc = shared.modelManager.getClassDescriptor(pitem.addto.type).getRaw();
                 var toType = toDesc.attributes[pitem.addin].type;
 
                 if (pitem.type === "reference") {
@@ -181,7 +181,7 @@ define (["jquery"], function($) {
         };
 
         $scope.getNameByUid = function (uid) {
-            var item = mainModelManager.getModelByUid(uid);
+            var item = shared.modelManager.getModelByUid(uid);
             return $scope.getName(item);
         };
 
@@ -193,7 +193,7 @@ define (["jquery"], function($) {
 
 
         shared.addReferenceItem = function (descid, addto, addin) {
-            var item = mainModelManager.addModel(descid, false);
+            var item = shared.modelManager.addModel(descid, false);
 
             var pitem;
             if (addto && addin && $scope.item.uid) {
@@ -202,7 +202,7 @@ define (["jquery"], function($) {
 
             var args = {
                 item: item,
-                descriptor: mainModelManager.getClassDescriptor(item.type).flattenByItem(item),
+                descriptor: shared.modelManager.getClassDescriptor(item.type).flattenByItem(item),
                 pushInStack: false,
                 pending: pitem
             };
@@ -229,11 +229,11 @@ define (["jquery"], function($) {
         $scope.getName = shared.getName;
 
         $scope.save = function () {
-            mainModelManager.saveToStorage("base");
+            shared.modelManager.saveToStorage("base");
         };
 
         $scope.load = function () {
-            mainModelManager.loadModel("base");
+            shared.modelManager.loadModel("base");
         };
 
     };
