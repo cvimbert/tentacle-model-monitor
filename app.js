@@ -11,11 +11,7 @@ mainApp.directive('draggable', draggableDirective);
 
 var mainModelManager;
 
-mainApp.factory('shared', function () {
-    return {
-
-    };
-});
+mainApp.factory('shared', sharedFactory);
 
 $(document).ready(function() {
     require(["monitoringapp"], function(MonitoringApp) {
