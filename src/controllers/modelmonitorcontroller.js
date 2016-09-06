@@ -1,6 +1,6 @@
 /* global Tentacle */
 
-Tentacle.mainApp.controller("modelmonitorcontroller", function ($scope, shared) {
+mainApp.controller("modelmonitorcontroller", function ($scope, shared) {
     
     $scope.init = function (datas) {
        var serDatas = atob(datas);
@@ -14,7 +14,7 @@ Tentacle.mainApp.controller("modelmonitorcontroller", function ($scope, shared) 
     };
 
     $scope.getModels = function () {
-        $scope.models = Tentacle.modelManager.getModelByType($scope.modeltype);
+        $scope.models = mainModelManager.getModelByType($scope.modeltype);
     };
 
     $scope.addReferenceItem = shared.addReferenceItem;
@@ -27,6 +27,6 @@ Tentacle.mainApp.controller("modelmonitorcontroller", function ($scope, shared) 
 
     $scope.deleteItem = function (descid, item, $event) {
         $event.stopPropagation();
-        Tentacle.modelManager.deleteItem(descid, item);
+        mainModelManager.deleteItem(descid, item);
     };
 });

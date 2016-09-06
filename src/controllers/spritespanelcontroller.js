@@ -1,6 +1,6 @@
 /* global Tentacle */
 
-Tentacle.mainApp.controller("spritespanelcontroller", function ($scope, shared) {
+mainApp.controller("spritespanelcontroller", function ($scope, shared) {
     $scope.init = function (datas) {
        var serDatas = atob(datas);
        datasObj = JSON.parse(serDatas);
@@ -11,13 +11,13 @@ Tentacle.mainApp.controller("spritespanelcontroller", function ($scope, shared) 
        
        $scope.getModels();
        
-       $scope.controlSprites = Tentacle.modelManager.getModelByType("ControlSprite");
-       $scope.foregroundSprites = Tentacle.modelManager.getModelByType("ForegroundSprite");
-       $scope.backgroundSprites = Tentacle.modelManager.getModelByType("BackgroundSprite");
+       $scope.controlSprites = mainModelManager.getModelByType("ControlSprite");
+       $scope.foregroundSprites = mainModelManager.getModelByType("ForegroundSprite");
+       $scope.backgroundSprites = mainModelManager.getModelByType("BackgroundSprite");
     };
 
     $scope.getModels = function () {
-        $scope.models = Tentacle.modelManager.getModelByType($scope.modeltype);
+        $scope.models = mainModelManager.getModelByType($scope.modeltype);
     };
 
     $scope.addReferenceItem = shared.addReferenceItem;
@@ -37,13 +37,13 @@ Tentacle.mainApp.controller("spritespanelcontroller", function ($scope, shared) 
     };
     
     $scope.getImageUrl = function (model, folder) {
-        var spriteFile = Tentacle.modelManager.getModelByUid(model.get("reference"));
-        var spritePackage = Tentacle.modelManager.getModelByUid(spriteFile.get("package"));
+        var spriteFile = mainModelManager.getModelByUid(model.get("reference"));
+        var spritePackage = mainModelManager.getModelByUid(spriteFile.get("package"));
         return spritePackage.get("identifier") + "/" + folder + "/" + spriteFile.get("file");
     };
 
     $scope.deleteItem = function (descid, item, $event) {
         $event.stopPropagation();
-        Tentacle.modelManager.deleteItem(descid, item);
+        mainModelManager.deleteItem(descid, item);
     };
 });

@@ -16,14 +16,15 @@
 
 })(function(ModelManager, LoadingManager, MonitorPanelsSet) {
 
-    return function () {
+    return function (mainApp) {
         var panelsSets = {};
 
-        var modelManager = new ModelManager();
-        modelManager.init(modelDescriptorV3);
+        var t = this;
+        this.modelManager = new ModelManager();
+        this.modelManager.init(modelDescriptorV3);
 
         // voir si il existe une manière plus judicieuse de rendre dispo le modelManager
-        Tentacle.modelManager = modelManager;
+        //Tentacle.modelManager = modelManager;
 
         // chargement des templates
         var loadingManager = new LoadingManager();
@@ -42,7 +43,7 @@
             }
 
             // initialisation du router
-            Tentacle.mainApp.config(['$routeProvider',
+            mainApp.config(['$routeProvider',
                 function ($routeProvider) {
 
                     for (var setId in panelsSets) {
@@ -57,7 +58,7 @@
                     });
                 }]);
 
-            Tentacle.modelManager.loadModel("base");
+            t.modelManager.loadModel("base");
 
             angular.bootstrap(document, ["monitoring-panel"]);
         });

@@ -1,6 +1,6 @@
 /* global Tentacle, Localization, _ */
 
-Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, shared) {
+mainApp.controller("panelscontroller", function ($scope, $location, shared) {
 
     var defaultLanguage = "fr";
     $scope.backItemsStack = [];
@@ -16,7 +16,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
     $scope.$on("editItem", function (event, args) {
         $scope.item = args.item;
 
-        $scope.descriptor = Tentacle.modelManager.getClassDescriptor($scope.item.type).flattenByItem($scope.item);
+        $scope.descriptor = mainModelManager.getClassDescriptor($scope.item.type).flattenByItem($scope.item);
         $scope.descid = $scope.item.type;
 
         if (!args.pushInStack)
@@ -30,7 +30,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
 
 
     shared.editItem = function (uid) {
-        var item = Tentacle.modelManager.getModelByUid(uid);
+        var item = mainModelManager.getModelByUid(uid);
         $scope.editItemByItem(_.clone(item));
     };
 
@@ -42,7 +42,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
 
         var args = {
             item: item,
-            descriptor: Tentacle.modelManager.getClassDescriptor(item.type).flattenByItem(item),
+            descriptor: mainModelManager.getClassDescriptor(item.type).flattenByItem(item),
             pushInStack: isback
         };
 
@@ -88,17 +88,17 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
         // on remplace l'objet courant dans la stack
         $scope.backItemsStack[$scope.backItemsStack.length - 1] = $scope.item;
 
-        $scope.descriptor = Tentacle.modelManager.getClassDescriptor($scope.descid).flattenByItem($scope.item);
+        $scope.descriptor = mainModelManager.getClassDescriptor($scope.descid).flattenByItem($scope.item);
     };
 
     $scope.getReferences = function (targetDescid) {
-        var mod = Tentacle.modelManager.getModelById(targetDescid);
+        var mod = mainModelManager.getModelById(targetDescid);
         return mod;
     };
 
     $scope.validate = function () {
         validatePendingItem($scope.item.uid);
-        Tentacle.modelManager.saveObject($scope.descid, $scope.item);
+        mainModelManager.saveObject($scope.descid, $scope.item);
     };
 
     $scope.getReferencesCollection = function (item, attribute) {
@@ -111,12 +111,12 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
 
             if (item.get(attribute.linkedcollectionattribute)) {
                 var linkedItemAttribute = item.get(attribute.linkedcollectionattribute);
-                var litem = Tentacle.modelManager.getItem(linkedItemAttribute);
+                var litem = mainModelManager.getItem(linkedItemAttribute);
 
                 var itemValues = litem.get(attribute.linkedcollectionattributevalue);
 
                 _.each(itemValues, function (itemUid) {
-                    var it = Tentacle.modelManager.getItem(itemUid);
+                    var it = mainModelManager.getItem(itemUid);
                     ret[itemUid] = it;
                 });
             }
@@ -124,7 +124,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
             return ret;
 
         } else {
-            return Tentacle.modelManager.getModelByType(attribute.referencetype);
+            return mainModelManager.getModelByType(attribute.referencetype);
         }
 
         return {};
@@ -152,7 +152,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
         if (pendingItems[uid]) {
             var pitem = pendingItems[uid];
 
-            var toDesc = Tentacle.modelManager.getClassDescriptor(pitem.addto.type).getRaw();
+            var toDesc = mainModelManager.getClassDescriptor(pitem.addto.type).getRaw();
             var toType = toDesc.attributes[pitem.addin].type;
 
             if (pitem.type === "reference") {
@@ -180,7 +180,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
     };
 
     $scope.getNameByUid = function (uid) {
-        var item = Tentacle.modelManager.getModelByUid(uid);
+        var item = mainModelManager.getModelByUid(uid);
         return $scope.getName(item);
     };
 
@@ -192,7 +192,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
 
 
     shared.addReferenceItem = function (descid, addto, addin) {
-        var item = Tentacle.modelManager.addModel(descid, false);
+        var item = mainModelManager.addModel(descid, false);
 
         var pitem;
         if (addto && addin && $scope.item.uid) {
@@ -201,7 +201,7 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
 
         var args = {
             item: item,
-            descriptor: Tentacle.modelManager.getClassDescriptor(item.type).flattenByItem(item),
+            descriptor: mainModelManager.getClassDescriptor(item.type).flattenByItem(item),
             pushInStack: false,
             pending: pitem
         };
@@ -228,11 +228,11 @@ Tentacle.mainApp.controller("panelscontroller", function ($scope, $location, sha
     $scope.getName = shared.getName;
 
     $scope.save = function () {
-        Tentacle.modelManager.saveToStorage("base");
+        mainModelManager.saveToStorage("base");
     };
     
     $scope.load = function () {
-        Tentacle.modelManager.loadModel("base");
+        mainModelManager.loadModel("base");
     };
     
 });
