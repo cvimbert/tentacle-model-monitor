@@ -1,5 +1,7 @@
 /* global Tentacle */
 
-var panelController = function ($scope) {
+define([], function() {
+    return function ($scope) {
 
-};
+    };
+});

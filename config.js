@@ -22,6 +22,12 @@ require.config({
         monitorpanel: 'src/monitorpanel',
         monitorpanelsset: 'src/monitorpanelsset',
         monitoringapp: 'src/monitoringapp',
-        uuid: 'node_modules/node-uuid/uuid'
+        uuid: 'node_modules/node-uuid/uuid',
+        modelmonitorcontroller: 'src/controllers/modelmonitorcontroller',
+        panelcontroller: 'src/controllers/panelcontroller',
+        panelscontroller: 'src/controllers/panelscontroller',
+        spritespanelcontroller: 'src/controllers/spritespanelcontroller',
+        sharedfactory: 'src/factory/shared',
+        draggabledirective: 'src/directives/draggable'
     }
 });
