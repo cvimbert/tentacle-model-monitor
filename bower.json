@@ -15,6 +15,13 @@
     "tests"
   ],
   "dependencies": {
-    "tentacle-model-manager": "cvimbert/tentacle-model-manager"
+    "tentacle-model-manager": "cvimbert/tentacle-model-manager",
+    "underscore": "^1.8.3",
+    "jquery": "^3.1.0",
+    "uuid": "^2.0.2",
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "requirejs": "^2.3.1"
   }
 }
