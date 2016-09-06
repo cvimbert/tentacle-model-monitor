@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 
-    require(["monitoringapp", "modelmonitorcontroller", "panelcontroller", "panelscontroller", "spritespanelcontroller", "draggabledirective", "sharedfactory"], function(MonitoringApp, modelMonitorController, panelController, panelsController, spritesPanelController, draggableDirective, sharedFactory) {
+    require(["monitoringapp", "modelmonitorcontroller", "panelcontroller", "panelscontroller", "spritespanelcontroller", "draggabledirective"], function(MonitoringApp, modelMonitorController, panelController, panelsController, spritesPanelController, draggableDirective) {
 
         var shared = {};
 
