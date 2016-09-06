@@ -1,6 +1,6 @@
 /* global Tentacle, Localization, _ */
 
-define (["jquery"], function($) {
+define (["jquery", "localization"], function($, Localization) {
     return function ($scope, $location, shared) {
 
         var defaultLanguage = "fr";

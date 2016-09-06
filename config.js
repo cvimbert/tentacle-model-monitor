@@ -28,6 +28,7 @@ require.config({
         panelscontroller: 'src/controllers/panelscontroller',
         spritespanelcontroller: 'src/controllers/spritespanelcontroller',
         sharedfactory: 'src/factory/shared',
-        draggabledirective: 'src/directives/draggable'
+        draggabledirective: 'src/directives/draggable',
+        localization: 'data/localisation'
     }
 });

@@ -16,12 +16,12 @@
 
 })(function(ModelManager, LoadingManager, MonitorPanelsSet) {
 
-    return function (mainApp) {
+    return function (mainApp, modelDescriptorJson, monitorDesc) {
         var panelsSets = {};
 
         var t = this;
         this.modelManager = new ModelManager();
-        this.modelManager.init(modelDescriptorV3);
+        this.modelManager.init(modelDescriptorJson);
 
         // voir si il existe une manière plus judicieuse de rendre dispo le modelManager
         //Tentacle.modelManager = modelManager;

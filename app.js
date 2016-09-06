@@ -18,7 +18,7 @@ $(document).ready(function() {
             return shared;
         });
 
-        var app = new MonitoringApp(mainApp);
+        var app = new MonitoringApp(mainApp, modelDescriptorV3, monitorDesc);
         shared.modelManager = app.modelManager;
     });
 });
