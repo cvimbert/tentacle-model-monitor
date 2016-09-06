@@ -15,6 +15,7 @@ mainApp.controller("modelmonitorcontroller", function ($scope, shared) {
 
     $scope.getModels = function () {
         $scope.models = mainModelManager.getModelByType($scope.modeltype);
+        console.log($scope.models);
     };
 
     $scope.addReferenceItem = shared.addReferenceItem;

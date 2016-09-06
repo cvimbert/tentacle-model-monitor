@@ -76,5 +76,5 @@ var monitorDesc = {
             
         }
     },
-    defaultset: "panelsset1"
+    defaultset: "panelsset2"
 };

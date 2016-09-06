@@ -39,6 +39,7 @@
             }
 
             this.template.addClass(id);
+            this.template = this.template.html();
 
             if (panelDesc.title) {
                 $("#title", this.template).append(panelDesc.title);

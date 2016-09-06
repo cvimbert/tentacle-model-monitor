@@ -1,28 +1,8 @@
 /* global _, Widgets, angular, modelDescriptorV3, Localization, loadform, mainApp, saveform */
 
-//var mainApp = angular.module("mainApp", []);
-
-/*mainApp.config(['$routeProvider',
- function ($routeProvider) {
- $routeProvider.
- when('/addStudent', {
- templateUrl: 'addStudent.htm',
- controller: 'AddStudentController'
- }).
- when('/viewStudents', {
- templateUrl: 'viewStudents.htm',
- controller: 'ViewStudentsController'
- }).
- otherwise({
- redirectTo: '/addStudent'
- });
- }]);*/
-
 angular.module("model-monitor", [])
         .controller("modelmonitorcontroller", function ($scope) {
             var modelManager = new ModelManagerV2();
-
-
 
             modelManager.init();
 
