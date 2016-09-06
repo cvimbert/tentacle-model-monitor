@@ -1,5 +1,5 @@
 /* global Tentacle */
 
-mainApp.controller("panelcontroller", function ($scope) {
+var panelController = function ($scope) {
 
-});
+};

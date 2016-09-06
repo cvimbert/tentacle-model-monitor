@@ -1,15 +1,15 @@
 /* global Tentacle */
 
-mainApp.controller("modelmonitorcontroller", function ($scope, shared) {
-    
+var modelMonitorController = function ($scope, shared) {
+
     $scope.init = function (datas) {
        var serDatas = atob(datas);
        datasObj = JSON.parse(serDatas);
-       
+
        for (var propName in datasObj) {
            $scope[propName] = datasObj[propName];
        }
-       
+
        $scope.getModels();
     };
 
@@ -30,4 +30,4 @@ mainApp.controller("modelmonitorcontroller", function ($scope, shared) {
         $event.stopPropagation();
         mainModelManager.deleteItem(descid, item);
     };
-});
+};

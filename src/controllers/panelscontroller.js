@@ -1,6 +1,6 @@
 /* global Tentacle, Localization, _ */
 
-mainApp.controller("panelscontroller", function ($scope, $location, shared) {
+var panelsController = function ($scope, $location, shared) {
 
     var defaultLanguage = "fr";
     $scope.backItemsStack = [];
@@ -235,4 +235,4 @@ mainApp.controller("panelscontroller", function ($scope, $location, shared) {
         mainModelManager.loadModel("base");
     };
     
-});
+};

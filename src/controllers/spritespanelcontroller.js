@@ -1,6 +1,6 @@
 /* global Tentacle */
 
-mainApp.controller("spritespanelcontroller", function ($scope, shared) {
+var spritesPanelController =  function ($scope, shared) {
     $scope.init = function (datas) {
        var serDatas = atob(datas);
        datasObj = JSON.parse(serDatas);
@@ -46,4 +46,4 @@ mainApp.controller("spritespanelcontroller", function ($scope, shared) {
         $event.stopPropagation();
         mainModelManager.deleteItem(descid, item);
     };
-});
+};

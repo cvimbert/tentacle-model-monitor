@@ -3,6 +3,12 @@
  */
 
 var mainApp = angular.module("monitoring-panel", ['ngRoute']);
+mainApp.controller("modelmonitorcontroller", modelMonitorController);
+mainApp.controller("panelcontroller", panelController);
+mainApp.controller("panelscontroller", panelsController);
+mainApp.controller("spritespanelcontroller", spritesPanelController);
+mainApp.directive('draggable', draggableDirective);
+
 var mainModelManager;
 
 mainApp.factory('shared', function () {

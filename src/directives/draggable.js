@@ -1,7 +1,7 @@
 /**
  * Created by Christophe on 06/09/2016.
  */
-mainApp.directive('draggable', function(){
+var draggableDirective = function(){
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -16,4 +16,4 @@ mainApp.directive('draggable', function(){
             });
         }
     };
-});
+};
