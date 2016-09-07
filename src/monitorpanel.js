@@ -65,6 +65,7 @@
             }
 
             html.addClass(id);
+            html.addClass("displayer-panel");
 
             $("#" + panelDesc.containerid, panelsSet.template).append(html);
         };
