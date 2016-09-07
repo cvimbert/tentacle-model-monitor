@@ -65,7 +65,6 @@
             }
 
             html.addClass(id);
-            html.addClass("panel");
 
             $("#" + panelDesc.containerid, panelsSet.template).append(html);
         };
